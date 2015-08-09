@@ -5,7 +5,7 @@ CREATE TABLE dbo.HistoricalQuotesAdjusted
 (
 	QuoteID BIGINT IDENTITY
 	,SecurityID INT
-	,[Volume] MONEY
+	,[Volume] BIGINT
 	,AdjClose MONEY
 	,CONSTRAINT PK_HistoricalQuotesAdjusted PRIMARY KEY (QuoteID)
 	,CONSTRAINT FK_HistoricalQuotesAdjusted_SECURITYID FOREIGN KEY (SecurityID) REFERENCES dbo.SecurityMaster(SecurityID)
