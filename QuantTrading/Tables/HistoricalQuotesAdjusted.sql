@@ -5,6 +5,7 @@ CREATE TABLE dbo.HistoricalQuotesAdjusted
 (
 	QuoteID BIGINT IDENTITY
 	,SecurityID INT
+	,[Date] DATE NOT NULL
 	,[Volume] BIGINT
 	,AdjClose MONEY
 	,CONSTRAINT PK_HistoricalQuotesAdjusted PRIMARY KEY (QuoteID)
@@ -13,6 +14,10 @@ CREATE TABLE dbo.HistoricalQuotesAdjusted
 
 CREATE NONCLUSTERED INDEX IX_HistoricalQuotesAdjusted_SECURITYID
 ON dbo.HistoricalQuotesAdjusted(SecurityID)
+INCLUDE ([DATE], [Volume], AdjClose)
+
+CREATE UNIQUE NONCLUSTERED INDEX UIX_HistoricalQuotesAdjusted_SECURITYID_DATE
+ON dbo.HistoricalQuotesAdjusted(SecurityID, [DATE])
 INCLUDE ([Volume], AdjClose)
 
 PRINT 'CREATE TABLE dbo.HistoricalQuotesAdjusted'

@@ -5,6 +5,7 @@ CREATE TABLE dbo.HistoricalQuotesOHLC
 (
 	QuoteID BIGINT IDENTITY
 	,SecurityID INT
+	,[Date] DATE NOT NULL
 	,[Open] MONEY
 	,High MONEY
 	,Low MONEY
@@ -15,7 +16,12 @@ CREATE TABLE dbo.HistoricalQuotesOHLC
 
 CREATE NONCLUSTERED INDEX IX_HISTORICALQUOTESOHLC_SECURITYID
 ON dbo.HistoricalQuotesOHLC(SecurityID)
+INCLUDE ([Date], [Open], High, Low, [Close])
+
+CREATE UNIQUE NONCLUSTERED INDEX UIX_HISTORICALQUOTESOHLC_SECURITYID_DATE
+ON dbo.HistoricalQuotesOHLC(SecurityID, [DATE])
 INCLUDE ([Open], High, Low, [Close])
+
 
 PRINT 'CREATE TABLE dbo.HistoricalQuotesOHLC'
 
