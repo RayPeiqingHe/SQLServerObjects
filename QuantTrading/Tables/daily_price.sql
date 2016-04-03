@@ -20,3 +20,13 @@ constraint fk_symbol_id foreign KEY (symbol_id) references symbol(id)
 )
 
 END
+
+
+CREATE NONCLUSTERED INDEX ix_daily_price_symbol_id
+ON [dbo].[daily_price] ([symbol_id])
+INCLUDE ([price_date],[adj_close_price])
+
+
+CREATE UNIQUE NONCLUSTERED INDEX uix_daily_price_symbol_id_date_price_date
+ON [dbo].[daily_price] ([symbol_id], [price_date])
+INCLUDE ([adj_close_price])

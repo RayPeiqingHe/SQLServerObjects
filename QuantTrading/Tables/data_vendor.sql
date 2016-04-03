@@ -12,3 +12,8 @@ constraint pk_data_vendor PRIMARY KEY (id)
 )
 
 END 
+
+
+INSERT INTO data_vendor
+VALUES ('yahoo', 'http://ichart.finance.yahoo.com/table.csv?s=%s&a=%s&b=%s&c=%s&d=%s&e=%s&f=%s', NULL,
+GETDATE(), GETDATE())
