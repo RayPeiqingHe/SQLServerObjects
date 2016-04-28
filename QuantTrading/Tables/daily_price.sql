@@ -21,6 +21,7 @@ constraint fk_symbol_id foreign KEY (symbol_id) references symbol(id)
 
 END
 
+--DROP TABLE daily_price
 
 CREATE NONCLUSTERED INDEX ix_daily_price_symbol_id
 ON [dbo].[daily_price] ([symbol_id])
