@@ -16,3 +16,6 @@ CONSTRAINT fk_exchange FOREIGN KEY (exchange_id) references exchange(id)
 )
 
 END
+
+
+CREATE UNIQUE NONCLUSTERED INDEX uix_symbol_ticker ON symbol(ticker)
