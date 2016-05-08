@@ -31,3 +31,7 @@ INCLUDE ([price_date],[adj_close_price])
 CREATE UNIQUE NONCLUSTERED INDEX uix_daily_price_symbol_id_date_price_date
 ON [dbo].[daily_price] ([symbol_id], [price_date])
 INCLUDE ([adj_close_price])
+
+
+ALTER TABLE daily_price
+ADD prior_adj_close_price decimal(19,4) NULL
