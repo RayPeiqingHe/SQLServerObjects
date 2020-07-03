@@ -11,3 +11,7 @@ last_updated_date datetime NOT NULL DEFAULT NOW(),
 CONSTRAINT pk_symbol PRIMARY KEY (id),
 CONSTRAINT fk_exchange FOREIGN KEY (exchange_id) references exchange(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+CREATE UNIQUE INDEX unique_ticker
+ON symbol(ticker);
